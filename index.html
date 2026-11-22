@@ -11,40 +11,148 @@
 <body>
   <div class="wrap">
     <header class="site-head">
-      <a class="wordmark" href="./index.html">Lamply<span>课灯</span></a>
-      <nav class="nav" aria-label="文档">
-        <a href="./privacy.html">隐私</a>
-        <a href="./terms.html">会员协议</a>
-        <a href="./guide.html">使用指南</a>
+      <a class="wordmark" href="./index.html">Lamply</a>
+      <nav class="langs" aria-label="Language">
+        <button type="button" data-lang="zh-Hans" aria-current="true">简体中文</button>
+        <button type="button" data-lang="zh-Hant" aria-current="false">繁體中文</button>
+        <button type="button" data-lang="en" aria-current="false">English</button>
       </nav>
     </header>
 
     <main>
-      <h1>在线文档</h1>
-      <p class="lede">Lamply（课灯）是独立教师的排课与课费工作台。这里放随 App 提供的公开文档。</p>
+      <section class="lang-block" data-lang="zh-Hans" lang="zh-Hans">
+        <h1>在线文档</h1>
+        <p class="lede">Lamply（课灯）是独立教师的排课与课费工作台。这里放随 App 提供的公开文档。</p>
 
-      <div class="doc-list">
-        <a href="./privacy.html">
-          <span class="doc-title">隐私政策<small>数据如何保存与使用</small></span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a href="./terms.html">
-          <span class="doc-title">会员与订阅协议<small>订阅、续订与退款</small></span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a href="./guide.html">
-          <span class="doc-title">使用指南<small>从排课到记课费</small></span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
+        <div class="doc-list">
+          <a href="./zh-Hans/privacy.html">
+            <span class="doc-title">隐私政策<small>数据如何保存与使用</small></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="./zh-Hans/terms.html">
+            <span class="doc-title">会员与订阅协议<small>订阅、续订与退款</small></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="./zh-Hans/guide.html">
+            <span class="doc-title">使用指南<small>从排课到记课费</small></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
 
-      <p class="note">三份文档正在整理中，正文会在 App 上架前补齐。</p>
+        <p class="note">三份文档正在整理中，正文会在 App 上架前补齐。</p>
+
+        <footer>
+          最后更新：2026-11-22 · 联系：<a href="mailto:ruanweidev@163.com">ruanweidev@163.com</a><br>
+          Lamply（课灯） · 中国
+        </footer>
+      </section>
+
+      <section class="lang-block" data-lang="zh-Hant" lang="zh-Hant" hidden>
+        <h1>線上文件</h1>
+        <p class="lede">Lamply（課燈）是獨立教師的排課與課費工作台。這裡放隨 App 提供的公開文件。</p>
+
+        <div class="doc-list">
+          <a href="./zh-Hant/privacy.html">
+            <span class="doc-title">隱私權政策<small>資料如何保存與使用</small></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="./zh-Hant/terms.html">
+            <span class="doc-title">會員與訂閱協議<small>訂閱、續訂與退款</small></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="./zh-Hant/guide.html">
+            <span class="doc-title">使用指南<small>從排課到記課費</small></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <p class="note">三份文件正在整理中，正文會在 App 上架前補齊。</p>
+
+        <footer>
+          最後更新：2026-11-22 · 聯絡：<a href="mailto:ruanweidev@163.com">ruanweidev@163.com</a><br>
+          Lamply（課燈） · 中國
+        </footer>
+      </section>
+
+      <section class="lang-block" data-lang="en" lang="en" hidden>
+        <h1>Documentation</h1>
+        <p class="lede">Lamply is a scheduling and lesson-fee workspace for independent teachers. This site hosts the public documents that ship with the app.</p>
+
+        <div class="doc-list">
+          <a href="./en/privacy.html">
+            <span class="doc-title">Privacy Policy<small>How data is stored and used</small></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="./en/terms.html">
+            <span class="doc-title">Membership &amp; Subscription Terms<small>Subscriptions, renewal, and refunds</small></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="./en/guide.html">
+            <span class="doc-title">User Guide<small>From scheduling to lesson fees</small></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <p class="note">The three documents are being written and will be completed before the app launches.</p>
+
+        <footer>
+          Last updated: 2026-11-22 · Contact: <a href="mailto:ruanweidev@163.com">ruanweidev@163.com</a><br>
+          Lamply · China
+        </footer>
+      </section>
     </main>
-
-    <footer>
-      最后更新：2026-11-22 · 联系：<a href="mailto:ruanweidev@163.com">ruanweidev@163.com</a><br>
-      Lamply（课灯） · 中国
-    </footer>
   </div>
+
+  <script>
+    (function () {
+      var titles = {
+        'zh-Hans': 'Lamply 在线文档 · 隐私政策 / 会员协议 / 使用指南',
+        'zh-Hant': 'Lamply 線上文件 · 隱私權政策 / 會員協議 / 使用指南',
+        'en': 'Lamply Documentation · Privacy Policy / Membership & Subscription Terms / User Guide'
+      };
+      var descriptions = {
+        'zh-Hans': 'Lamply（课灯）的隐私政策、会员与订阅协议、App 使用指南。',
+        'zh-Hant': 'Lamply（課燈）的隱私權政策、會員與訂閱協議、App 使用指南。',
+        'en': 'Lamply’s privacy policy, membership and subscription terms, and user guide.'
+      };
+      var blocks = document.querySelectorAll('.lang-block');
+      var buttons = document.querySelectorAll('.langs button');
+      var meta = document.querySelector('meta[name="description"]');
+
+      function pick(lang) {
+        if (!titles[lang]) { return; }
+        document.documentElement.lang = lang;
+        document.title = titles[lang];
+        if (meta) { meta.setAttribute('content', descriptions[lang]); }
+        blocks.forEach(function (block) {
+          block.hidden = block.getAttribute('data-lang') !== lang;
+        });
+        buttons.forEach(function (button) {
+          button.setAttribute('aria-current', button.getAttribute('data-lang') === lang ? 'true' : 'false');
+        });
+        try { localStorage.setItem('lamply-docs-lang', lang); } catch (error) {}
+      }
+
+      buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          pick(button.getAttribute('data-lang'));
+        });
+      });
+
+      var saved = null;
+      try { saved = localStorage.getItem('lamply-docs-lang'); } catch (error) {}
+
+      if (saved && titles[saved]) {
+        pick(saved);
+      } else {
+        var language = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+        if (/^en/i.test(language)) {
+          pick('en');
+        } else if (/^zh-(hant|tw|hk|mo)/i.test(language)) {
+          pick('zh-Hant');
+        }
+      }
+    })();
+  </script>
 </body>
 </html>

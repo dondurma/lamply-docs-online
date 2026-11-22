@@ -1,9 +1,9 @@
 # Lamply · 在线文档站（lamply-docs-online）
 
 > 仓库：<https://github.com/dondurma/lamply-docs-online>
-> 状态：静态骨架已就绪并推送；Cloudflare Pages 尚未连接；三份文档正文仍为占位。
+> 状态：三语静态骨架已就绪并推送；Cloudflare Pages 尚未连接；三份文档正文仍为占位。
 
-Lamply（课灯）的公开文档站，供 App 内打开与浏览器独立访问。计划包含隐私政策、会员 / 订阅协议、App 使用指南。
+Lamply（课灯）的公开文档站，供 App 内打开与浏览器独立访问。包含隐私政策、会员 / 订阅协议、App 使用指南，支持简体中文、繁体中文、英文。
 
 - 技术：纯静态 HTML + 一份 CSS，无构建步骤、无第三方依赖
 - 托管：GitHub 仓库 → Cloudflare Pages
@@ -13,22 +13,33 @@ Lamply（课灯）的公开文档站，供 App 内打开与浏览器独立访问
 
 ```
 /
-  index.html      文档目录
-  style.css       全站样式（与 App 同一套纸感配色）
-  privacy.html    隐私政策（占位）
-  terms.html      会员 / 订阅协议（占位）
-  guide.html      App 使用指南（占位）
+  index.html          语言入口（默认跟随浏览器，可手动切换）
+  style.css           全站样式（与 App 同一套纸感配色）
+  zh-Hans/            简体中文
+    privacy.html
+    terms.html
+    guide.html
+  zh-Hant/            繁体中文
+    privacy.html
+    terms.html
+    guide.html
+  en/                 英文
+    privacy.html
+    terms.html
+    guide.html
   README.md
 ```
 
-| 页面 | 地址 |
-| --- | --- |
-| 首页 | `https://<domain>/` |
-| 隐私政策 | `https://<domain>/privacy` |
-| 会员 / 订阅协议 | `https://<domain>/terms` |
-| 使用指南 | `https://<domain>/guide` |
+| 页面 | 简体（默认） | 繁体 | English |
+| --- | --- | --- | --- |
+| 首页 | `/` | `/`（切语言） | `/`（切语言） |
+| 隐私政策 | `/zh-Hans/privacy` | `/zh-Hant/privacy` | `/en/privacy` |
+| 会员 / 订阅协议 | `/zh-Hans/terms` | `/zh-Hant/terms` | `/en/terms` |
+| 使用指南 | `/zh-Hans/guide` | `/zh-Hant/guide` | `/en/guide` |
 
 App 与 App Store Connect 用无扩展名地址。Cloudflare Pages 会把 `.html` 请求 308 到无扩展名地址，两种都能用；直接写无扩展名少一次跳转，也更像正式网址。
+
+根路径默认显示浏览器语言对应的版本（简体 / 繁体 / 英文），并记住用户手动选择；没有 JavaScript 时显示简体中文。文档页顶部只放同一份文档的三语互链，页脚返回首页。
 
 ## 2. 本地预览
 
@@ -38,6 +49,8 @@ python3 -m http.server 8080
 # 打开 http://localhost:8080
 ```
 
+`python3 -m http.server` 不支持无扩展名地址，本地请用 `.html` 结尾的路径测试；无扩展名地址在 Cloudflare Pages 上生效。
+
 ## 3. 部署到 Cloudflare Pages
 
 1. 打开 Cloudflare Dashboard → **Workers & Pages → Pages → Create → Connect to Git**
@@ -46,7 +59,7 @@ python3 -m http.server 8080
    - Framework preset：**None**
    - Build command：**留空**
    - Build output directory：**`/`**（仓库根）
-4. 保存并部署，先访问 `<project>.pages.dev` 验证页面
+4. 保存并部署，先访问 `<project>.pages.dev` 验证首页和三种语言
 5. 之后每次 push 到 `main`，Cloudflare Pages 会自动重新部署
 
 > 纯静态站点不需要 Node 或 npm，仓库里不要放 `node_modules`。
@@ -62,15 +75,16 @@ python3 -m http.server 8080
 
 ## 5. App 内与 App Store Connect
 
-- App Store Connect 的 **Privacy Policy URL**：`https://<domain>/privacy`
-- **Support URL**：`https://<domain>/guide`（或首页）
-- App 内「关于 / 会员」入口：直接打开对应路径；当前只有简体中文，使用根路径即可
-- 以后加英文：新增 `en/` 目录与语言切换，根路径保留简体中文，避免已上架 URL 失效
+- App Store Connect 的 **Privacy Policy URL**：`https://<domain>/zh-Hans/privacy`（审核默认简体；如审核要求英文，可换 `/en/privacy`）
+- **Support URL**：`https://<domain>/zh-Hans/guide`（或首页）
+- App 内「关于 / 会员」入口：按 App 当前语言打开对应目录；当前 App 只有简体，可先用 `zh-Hans` 路径
+- 三语路径固定，以后 App 增加繁体 / 英文界面时直接复用，不需要改 URL
 
 ## 6. 上线前检查
 
-- [ ] 替换 `privacy.html`、`terms.html`、`guide.html` 的占位正文
-- [ ] 删除四个页面的 `<meta name="robots" content="noindex">`
+- [ ] 替换三语共 9 个文档页的占位正文
+- [ ] 删除首页加 9 个文档页的 `<meta name="robots" content="noindex">`（共 10 页）
+- [ ] 三语文案校对（繁体用词、英文拼写）
 - [ ] 确认页脚联系邮箱（当前暂用 `ruanweidev@163.com`，沿用你另一款 App 的公开邮箱）
 - [ ] 确定域名并加 CNAME
 - [ ] 用无扩展名 URL 在 App 内实际打开一次
@@ -78,6 +92,7 @@ python3 -m http.server 8080
 ## 7. 维护约定
 
 - 每份文档顶部「最后更新」与页脚日期同步
-- 改导航或页脚时，四个页面一起检查
+- 改导航或页脚时，三语 9 个文档页一起检查
+- 三语版本内容保持同步；新增条目时三份 HTML 一起改
 - 站内全部相对路径，换域名不用改 HTML
 - 保持每个文档一个真实 HTML，不做 SPA；App 内、浏览器、缓存与分享都能直达

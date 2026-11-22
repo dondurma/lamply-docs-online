@@ -58,25 +58,36 @@ body {
   margin-left: 10px;
 }
 
-.nav {
+.langs {
   display: flex;
-  gap: 16px;
+  align-items: baseline;
+  gap: 14px;
   font-size: 13px;
 }
 
-.nav a {
+.langs a,
+.langs button {
+  font: inherit;
   color: var(--ink-2);
-  text-decoration: none;
-  padding-bottom: 2px;
+  background: none;
+  border: 0;
   border-bottom: 1px solid transparent;
+  padding: 0 0 2px;
+  text-decoration: none;
+  cursor: pointer;
+  letter-spacing: 0.02em;
 }
 
-.nav a:hover { color: var(--ink); }
+.langs a:hover,
+.langs button:hover { color: var(--ink); }
 
-.nav a[aria-current="page"] {
+.langs a[aria-current="true"],
+.langs button[aria-current="true"] {
   color: var(--accent);
   border-bottom-color: var(--accent);
 }
+
+.lang-block[hidden] { display: none; }
 
 /* 正文 */
 h1 {
@@ -210,5 +221,5 @@ footer a:hover { color: var(--accent); }
   .wrap { padding: 24px 20px 56px; }
   h1 { font-size: 24px; }
   .site-head { flex-wrap: wrap; gap: 8px 16px; }
-  .nav { gap: 14px; }
+  .langs { gap: 12px; }
 }
