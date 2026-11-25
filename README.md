@@ -1,9 +1,10 @@
 # Lamply · 在线文档站（lamply-docs-online）
 
 > 仓库：<https://github.com/dondurma/lamply-docs-online>
-> 状态：三语静态骨架已就绪并推送；Cloudflare Pages 尚未连接；三份文档正文仍为占位。
+> 状态：三语静态站已上线，部署在 Cloudflare Pages，域名为 `https://docs.lamply.cn`。
+> 文档：隐私政策、用户协议、使用指南、关于；三语内容已补齐，不再使用 noindex 占位。
 
-Lamply（课灯）的公开文档站，供 App 内打开与浏览器独立访问。包含隐私政策、会员 / 订阅协议、App 使用指南，支持简体中文、繁体中文、英文。
+Lamply（课灯）的公开文档站，供 App 内打开与浏览器独立访问。包含隐私政策、用户协议、使用指南与关于页，支持简体中文、繁体中文、英文。
 
 - 技术：纯静态 HTML + 一份 CSS，无构建步骤、无第三方依赖
 - 托管：GitHub 仓库 → Cloudflare Pages
@@ -19,14 +20,17 @@ Lamply（课灯）的公开文档站，供 App 内打开与浏览器独立访问
     privacy.html
     terms.html
     guide.html
+    about.html
   zh-Hant/            繁体中文
     privacy.html
     terms.html
     guide.html
+    about.html
   en/                 英文
     privacy.html
     terms.html
     guide.html
+    about.html
   README.md
 ```
 
@@ -34,8 +38,9 @@ Lamply（课灯）的公开文档站，供 App 内打开与浏览器独立访问
 | --- | --- | --- | --- |
 | 首页 | `/` | `/`（切语言） | `/`（切语言） |
 | 隐私政策 | `/zh-Hans/privacy` | `/zh-Hant/privacy` | `/en/privacy` |
-| 会员 / 订阅协议 | `/zh-Hans/terms` | `/zh-Hant/terms` | `/en/terms` |
+| 用户协议 | `/zh-Hans/terms` | `/zh-Hant/terms` | `/en/terms` |
 | 使用指南 | `/zh-Hans/guide` | `/zh-Hant/guide` | `/en/guide` |
+| 关于 | `/zh-Hans/about` | `/zh-Hant/about` | `/en/about` |
 
 App 与 App Store Connect 用无扩展名地址。Cloudflare Pages 会把 `.html` 请求 308 到无扩展名地址，两种都能用；直接写无扩展名少一次跳转，也更像正式网址。
 
@@ -71,28 +76,28 @@ python3 -m http.server 8080
 3. 在 DNS 服务商给该子域加一条 `CNAME`，指向 `<project>.pages.dev`
 4. 回 Cloudflare 点 **Check DNS records**，等状态变为 Active；证书签发期间出现 SSL 握手失败属正常，等几分钟
 
-本项目的域名尚未确定；确定后把上面的 `<domain>` 替换掉。Cloudflare Pages 部署在境外，部署本身与绑定自定义域名都不需要备案；App Store 中国区上架所需的备案按你现有渠道办理，与本站托管无关。
+本项目使用 `docs.lamply.cn`；Cloudflare Pages 项目为 `lamply-docs-online`，CNAME 指向 `lamply-docs-online.pages.dev`。Cloudflare Pages 部署在境外，部署本身与绑定自定义域名都不需要备案；App Store 中国区上架所需的备案按你现有渠道办理，与本站托管无关。
 
 ## 5. App 内与 App Store Connect
 
-- App Store Connect 的 **Privacy Policy URL**：`https://<domain>/zh-Hans/privacy`（审核默认简体；如审核要求英文，可换 `/en/privacy`）
-- **Support URL**：`https://<domain>/zh-Hans/guide`（或首页）
-- App 内「关于 / 会员」入口：按 App 当前语言打开对应目录；当前 App 只有简体，可先用 `zh-Hans` 路径
-- 三语路径固定，以后 App 增加繁体 / 英文界面时直接复用，不需要改 URL
+- App Store Connect 的 **Privacy Policy URL**：`https://docs.lamply.cn/zh-Hans/privacy`（多数地区审核可接受简体；需要英文时换 `/en/privacy`）
+- **Support URL**：`https://docs.lamply.cn/zh-Hans/guide`
+- App 内「设置 → 关于与条款」：已按当前界面语言打开 `/{lang}/about|terms|privacy|guide`；首启引导底部也提供协议/隐私链接
+- 三语路径固定，App 切换语言后直接复用，不需要改 URL
 
 ## 6. 上线前检查
 
-- [ ] 替换三语共 9 个文档页的占位正文
-- [ ] 删除首页加 9 个文档页的 `<meta name="robots" content="noindex">`（共 10 页）
-- [ ] 三语文案校对（繁体用词、英文拼写）
-- [ ] 确认页脚联系邮箱（当前暂用 `ruanweidev@163.com`，沿用你另一款 App 的公开邮箱）
-- [ ] 确定域名并加 CNAME
-- [ ] 用无扩展名 URL 在 App 内实际打开一次
+- [x] 补齐三语共 12 个文档页正文（privacy / terms / guide / about）
+- [x] 删除首页与 12 个文档页的 noindex 占位
+- [x] 三语文案校对（繁体用词、英文拼写）
+- [x] 确认页脚联系邮箱 `ruanweidev@163.com`
+- [x] 绑定 `docs.lamply.cn`
+- [ ] App Store Connect 三语 Listing 与 Support/Privacy URL 最终填写
 
 ## 7. 维护约定
 
 - 每份文档顶部「最后更新」与页脚日期同步
-- 改导航或页脚时，三语 9 个文档页一起检查
-- 三语版本内容保持同步；新增条目时三份 HTML 一起改
+- 改导航或页脚时，三语 12 个文档页一起检查
+- 三语版本内容保持同步；新增条目时 12 份 HTML 一起改
 - 站内全部相对路径，换域名不用改 HTML
 - 保持每个文档一个真实 HTML，不做 SPA；App 内、浏览器、缓存与分享都能直达
